@@ -1,0 +1,39 @@
+*Input is numbers by groups;
+*Output is pooled Odds Ratios;
+
+*Columns for input data are:
+  Region
+  Country
+  Group 1 sample size
+  Group 1 number of cases
+  Group 1 number of non-cases
+  Group 2 sample size
+  Group 2 number of cases
+  Group 2 number of non-cases
+  Weights
+  List in Subgroup 1
+  List in Subgroup 2
+  List in Subgroup 3
+  ...
+  List in Subgroup n
+  Moderator variable 1
+  Moderator variable 2
+  Moderator variable 3
+  ...
+  Moderator variable n;
+  
+*Weighted meta-analysis;
+  =MAInputTable("<Title>","NumOR","QE",<input data range from Country:Weights>)
+  
+*Sub-group analysis;
+  =MASubGroups("<subgroup by variable>",<weighted meta-analysis>,<input data range from Subgroup 1:Subgroup n>)
+ 
+*Meta-regression data;
+  =MARegresData(<Weighted meta-analysis>,<input data range from Moderator variable 1: Moderator variable n>)
+
+ OR  =MAPooledEffect(<weighted meta-analysis>)
+ LCI =MAPooledEffectLCI(<weighted meta-analysis>)
+ HCI =MAPooledEffectHCI(<weighted meta-analysis>)
+ Q   =MACochranQ(<weighted meta-analysis>)
+ Ns  =MANumStudies(<weighted meta-analysis>)
+ p   =CHIDIST(<Q>,<Ns>-1)
